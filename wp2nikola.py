@@ -5,6 +5,7 @@ import glob
 from datetime import datetime
 from subprocess import check_output
 from tempfile import mktemp
+from optparse import OptionParser
 
 from lxml.etree import ElementTree
 
@@ -208,9 +209,26 @@ def run(inputfile, outputdir):
     nex = NikolaExporter(outputdir)
     nex.export(wpi.posts, wpi.pages)
 
-if __name__ == '__main__':
-    import sys
 
-    inputfile = sys.argv[1]
-    outputdir = sys.argv[2]
-    run(inputfile, outputdir)
+def get_options(args=None):
+    parser = OptionParser()
+    parser.add_option("-i", "--inputfile", dest="inputfile", 
+                        help="The wordpress export file used as input.", metavar="FILE")
+    parser.add_option("-o", "--outputdir", dest="outputdir",
+                        help="The directory of the Nikola site where the output will be generated.")
+
+    (options, args) = parser.parse_args(args)
+
+    if not options.inputfile:
+        parser.error('Please provide an input file.')
+
+    if not options.outputdir:
+        parser.error('Please provide an output directory.')
+
+    return options
+
+
+if __name__ == '__main__':
+    options = get_options()
+
+    run(options.inputfile, options.outputdir)
