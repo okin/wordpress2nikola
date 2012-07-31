@@ -26,3 +26,17 @@ Creating a Wordpress Export File
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The extraction of your wordpress content is described in the Wordpress documentation.
 http://codex.wordpress.org/Tools_Export_Screen
+
+
+Troubleshooting
+---------------
+
+Running ``doit`` fails with message *Undefined substitution referenced*
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The error message contains a file and a line. Please check for possibly incorrent references, i.e. something like the following:
+
+    ``|Linked Image|Text starting here``
+
+The solution to this to put a space between the image declaration and the text:
+
+    ``|Linked Image| Text starting here``
