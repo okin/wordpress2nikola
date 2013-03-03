@@ -1,6 +1,12 @@
 wordpress2nikola
 ================
 
+**Nikola has it's own import mechanism and I'd recommend you to use 
+it because it's for mor evolved.
+Please have a look at the 
+`Nikola handbook <http://nikola.ralsina.com.ar/handbook.html>`_ 
+for information about how to use it.**
+
 Converting your content from Wordpress to Nikola.
 
 The aim of this is to make the move from Wordpress to Nikola as painless as possible.
